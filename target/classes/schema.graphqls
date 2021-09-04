@@ -1,0 +1,32 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query {
+
+    allUsers: [User!]
+    allDrivers: [User!]
+    allClients: [User!]
+    user(id:String): User!
+#    deleteOffer(offerId: String): Offer!
+
+    allOffers: [Offer!]
+    offer(offerId: String): Offer!
+}
+
+type Mutation {
+    createUser(userType: UserType!,
+        firstName: String,
+        lastName: String!,
+        phone: String!,
+        age: Int,
+        authProvider: AuthData!
+        isApproved: Boolean!): User
+
+    signInUser(auth: AuthData): SignInPayload
+
+    createOffer(userId: String,location: LocationInput,vehicle: String) : Offer!
+    approveOffer(offerId: String!): Offer!
+    onDrive(offerId: String!): Offer!
+}

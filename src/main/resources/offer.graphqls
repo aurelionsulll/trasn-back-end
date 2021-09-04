@@ -1,0 +1,20 @@
+type Offer {
+    id: ID!
+    userId: String!
+    location: Location!
+    vehicle: String!
+    onDrive:Boolean!
+    isApproved: Boolean!
+}
+
+type Location {
+    longitude: String!
+    latitude: String!
+}
+
+
+input LocationInput {
+    longitude: String!
+    latitude: String!
+}
+

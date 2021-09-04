@@ -1,0 +1,31 @@
+
+
+enum UserType {
+    admin
+    driver
+    client
+}
+
+type User {
+    id: ID!
+    userType: UserType!
+    firstName: String!
+    lastName: String!
+    phone: String!
+    age: Int!
+    email: String!
+    password: String!
+    isApproved: Boolean!
+}
+
+input AuthData {
+    email: String!
+    password: String!
+}
+
+
+
+type SignInPayload {
+    token: String
+    user: User
+}

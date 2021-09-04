@@ -1,0 +1,13 @@
+server:
+  port: 9001
+
+spring.data.mongodb.uri: mongodb+srv://mehdi:Password1234@cluster0.ndfxl.mongodb.net/transportApp
+
+graphql:
+  servlet:
+    enabled: true
+    mapping: /graphql
+    cors:
+      allowed-origin-patterns: http://localhost:3000
+  playground:
+    mapping: /playground
