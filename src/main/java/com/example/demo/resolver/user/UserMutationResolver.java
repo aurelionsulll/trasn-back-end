@@ -62,4 +62,13 @@ public class UserMutationResolver implements GraphQLMutationResolver {
 
     }
 
+    public User approveUser(String userId) {
+       return userRepository.findById(userId).setApproved(true);
+    }
+
+    public User blockUser(String userId)
+    {
+        return userRepository.findById(userId).setApproved(false);
+    }
+
 }

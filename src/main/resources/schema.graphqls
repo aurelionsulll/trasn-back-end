@@ -41,6 +41,10 @@ type Mutation {
         phone: String ,
         age: Int,
         password: String):User!
+    #Approve user
+    approveUser(userId: String):User!
+    #Block user by disabling his approved status
+    blockUser(userId: String):User!
 
     #Create new offer by driver only
     createOffer(userId: String,location: LocationInput,vehicle: String) : Offer!
