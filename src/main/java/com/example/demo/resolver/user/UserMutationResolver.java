@@ -34,7 +34,7 @@ public class UserMutationResolver implements GraphQLMutationResolver {
                 authData.getPassword(),
                 false);
 
-     return userRepository.insert(user);
+        return userRepository.insert(user);
     }
 
     public SignInPayload signInUser(AuthData auth) throws IllegalAccessException {
@@ -46,6 +46,20 @@ public class UserMutationResolver implements GraphQLMutationResolver {
         }
 
         throw new GraphQLException("Invalid credentials");
+    }
+
+    public User editUser(String userId, String firstName, String lastName, String phone, int age, String password) {
+
+        User user = userRepository.findById(userId);
+
+        if (!firstName.isEmpty()) user.setFirstName(firstName);
+        if (!lastName.isEmpty()) user.setLastName(lastName);
+        if (!phone.isEmpty()) user.setPhone(phone);
+        if (age != 0) user.setAge(age);
+        if (!password.isEmpty()) user.setPassword(password);
+
+        return userRepository.save(user);
+
     }
 
 }

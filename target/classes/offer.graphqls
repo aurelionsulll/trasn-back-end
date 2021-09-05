@@ -12,7 +12,6 @@ type Location {
     latitude: String!
 }
 
-
 input LocationInput {
     longitude: String!
     latitude: String!

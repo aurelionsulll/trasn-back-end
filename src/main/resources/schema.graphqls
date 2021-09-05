@@ -4,18 +4,28 @@ schema {
 }
 
 type Query {
-
+    #Retun all users list with all types
     allUsers: [User!]
+    #Retun driver list
     allDrivers: [User!]
+    #Retun client list
     allClients: [User!]
+    #Return user profile
     user(id:String): User!
-#    deleteOffer(offerId: String): Offer!
 
+    #Return offers list
     allOffers: [Offer!]
+    #Retuen one offer details
     offer(offerId: String): Offer!
+
+    #Return orders list
+    allOrders: [Order!]
+    #Retuen one order details
+    order(orderId: String, userId: String): Order!
 }
 
 type Mutation {
+    #Create new User and assign role
     createUser(userType: UserType!,
         firstName: String,
         lastName: String!,
@@ -23,10 +33,26 @@ type Mutation {
         age: Int,
         authProvider: AuthData!
         isApproved: Boolean!): User
-
     signInUser(auth: AuthData): SignInPayload
+    #Edit user details
+    editUser(userId: String ,
+        firstName: String,
+        lastName: String ,
+        phone: String ,
+        age: Int,
+        password: String):User!
 
+    #Create new offer by driver only
     createOffer(userId: String,location: LocationInput,vehicle: String) : Offer!
+    #Approve offer by admin only
     approveOffer(offerId: String!): Offer!
+    #delete offer by driver only when is not on drive
+    deleteOffer(offerId: String): Offer!
+    #After taking a mission the Driver status change to on Drive
     onDrive(offerId: String!): Offer!
+
+    #Create order by clients when selecting a specific offer
+    createOrder(offerId: String,
+        userId: String,
+        destination: LocationInput):Order
 }

@@ -47,11 +47,15 @@ public class OfferMutationResolver implements GraphQLMutationResolver {
         return offerRepository.save(offer);
     }
 
-//    public Offer deleteOffer(String offerId) {
-//        Offer offer = offerRepository.findById(offerId);
-//        offerRepository.delete(offer);
-//        return offer;
-//    }
+    public Offer deleteOffer(String offerId) {
+        Offer offer = offerRepository.findById(offerId);
+        if(!offer.getOnDrive())
+        {
+            offerRepository.delete(offer);
+            return offer;
+        }
+        return  new Offer();
+    }
 
 
 

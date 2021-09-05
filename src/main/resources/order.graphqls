@@ -1,0 +1,8 @@
+type Order {
+    id:ID!
+    offerId: String!
+    userId: String!
+    destination: Location!
+    price: Float!
+    date: String!
+}
