@@ -1,5 +1,9 @@
 package com.example.demo.model.user;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.servlet.http.HttpSession;
+
 public class AuthData {
 
     private String email;
@@ -8,6 +12,9 @@ public class AuthData {
     public AuthData(String email, String password) {
         this.email = email;
         this.password = password;
+    }
+
+    public AuthData() {
     }
 
     public String getEmail() {

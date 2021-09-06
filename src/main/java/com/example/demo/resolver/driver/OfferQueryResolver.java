@@ -13,23 +13,17 @@ public class OfferQueryResolver implements GraphQLQueryResolver {
 
     private final OfferRepository offerRepository;
 
-    public OfferQueryResolver(OfferRepository offerRepository,UserRepository userRepository) {
+    public OfferQueryResolver(OfferRepository offerRepository, UserRepository userRepository) {
         this.offerRepository = offerRepository;
     }
 
-    public List<Offer> allOffers(){
+    public List<Offer> allOffers() {
         return offerRepository.findAll();
     }
 
     public Offer offer(String offerId) {
         return offerRepository.findById(offerId);
     }
-
-//    public Optional<User> postedBy(Offer offer) {
-//        if(offer.getUserId() == null){ return null;};
-//        userRepository.findById(offer.getUserId());
-//        return userRepository.findById(offer.getUserId());
-//    }
 
 
 }

@@ -12,6 +12,10 @@ type Query {
     allClients: [User!]
     #Return user profile
     user(id:String): User!
+    #get currentUser
+    authUser:User!
+    #logout auth user
+    logout:Boolean!
 
     #Return offers list
     allOffers: [Offer!]
@@ -20,8 +24,10 @@ type Query {
 
     #Return orders list
     allOrders: [Order!]
-    #Retuen one order details
+    #Return one order details
     order(orderId: String, userId: String): Order!
+    #Retutn all orders by a client
+    clientOrders(userId: String!):[Order!]
 }
 
 type Mutation {
@@ -41,6 +47,11 @@ type Mutation {
         phone: String ,
         age: Int,
         password: String):User!
+    #Approve user
+    approveUser(userId: String):User!
+    #Block user by disabling his approved status
+    blockUser(userId: String):User!
+
 
     #Create new offer by driver only
     createOffer(userId: String,location: LocationInput,vehicle: String) : Offer!
@@ -50,6 +61,8 @@ type Mutation {
     deleteOffer(offerId: String): Offer!
     #After taking a mission the Driver status change to on Drive
     onDrive(offerId: String!): Offer!
+    #is Offer active to be showed by users
+    isActive(offerId: String!): Offer!
 
     #Create order by clients when selecting a specific offer
     createOrder(offerId: String,

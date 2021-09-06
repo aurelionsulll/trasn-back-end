@@ -5,6 +5,7 @@ type Offer {
     vehicle: String!
     onDrive:Boolean!
     isApproved: Boolean!
+    isActive: Boolean!
 }
 
 type Location {

@@ -12,6 +12,7 @@ public class Offer {
     private String vehicle;
     private Boolean onDrive;
     private Boolean isApproved;
+    private Boolean isActive;
 
     public Boolean getIsApproved() {
         return isApproved;
@@ -19,6 +20,24 @@ public class Offer {
 
     public Offer setIsApproved(Boolean isApproved) {
         this.isApproved = isApproved;
+        return this;
+    }
+
+    public Boolean getApproved() {
+        return isApproved;
+    }
+
+    public Offer setApproved(Boolean approved) {
+        isApproved = approved;
+        return this;
+    }
+
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public Offer setActive(Boolean active) {
+        isActive = active;
         return this;
     }
 
@@ -40,6 +59,7 @@ public class Offer {
         this.vehicle = vehicle;
         this.onDrive = false;
         this.isApproved = false;
+        this.isActive = true;
     }
 
     public ObjectId getId() {

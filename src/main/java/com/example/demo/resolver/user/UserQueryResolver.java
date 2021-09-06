@@ -1,10 +1,17 @@
 package com.example.demo.resolver.user;
 
+import com.example.demo.model.user.CurrentUser;
 import com.example.demo.model.user.User;
 import com.example.demo.model.user.UserType;
 import com.example.demo.repository.UserRepository;
+import graphql.GraphQLException;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.stereotype.Component;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionContext;
+import java.util.Enumeration;
 import java.util.List;
 
 
@@ -20,7 +27,6 @@ public class UserQueryResolver implements GraphQLQueryResolver {
         return userRepository.findAll();
     }
 
-
     public List<User> allDrivers() {
         return userRepository.findByUserType(UserType.driver);
     }
@@ -31,6 +37,22 @@ public class UserQueryResolver implements GraphQLQueryResolver {
     public User user(String id) {
         return userRepository.findById(id);
     }
+
+    public User authUser() {
+        if (!CurrentUser.user.equals(null))
+        {
+          return CurrentUser.user;
+        }
+        throw new GraphQLException("no auth user");
+    }
+
+    public Boolean logout()
+    {
+        CurrentUser.user = null;
+        return true;
+    }
+
+
 
 //    public User user(SignInPayload payload) {
 //        return payload.getUser();

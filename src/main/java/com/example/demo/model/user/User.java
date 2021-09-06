@@ -1,7 +1,13 @@
 package com.example.demo.model.user;
 
 import org.bson.types.ObjectId;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.data.annotation.Id;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.WebApplicationContext;
+
 
 public class User {
     @Id

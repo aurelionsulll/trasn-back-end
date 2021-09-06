@@ -3,6 +3,7 @@ package com.example.demo.model.client;
 import com.example.demo.model.driver.Location;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.Date;
 

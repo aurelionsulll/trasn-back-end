@@ -57,6 +57,8 @@ public class OfferMutationResolver implements GraphQLMutationResolver {
         return  new Offer();
     }
 
-
+    public Offer isActive(String offerId){
+        return offerRepository.save(offerRepository.findById(offerId).setActive(!offerRepository.findById(offerId).getActive()));
+    }
 
 }

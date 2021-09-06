@@ -8,6 +8,7 @@ import com.example.demo.repository.OfferRepository;
 import com.example.demo.repository.OrderRepository;
 import com.example.demo.repository.UserRepository;
 import graphql.kickstart.tools.GraphQLQueryResolver;
+import org.bson.types.ObjectId;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -42,8 +43,12 @@ public class OrderQueryResolver implements GraphQLQueryResolver {
             return order;
         }
         return new Order();
-
     }
+
+    public List<Order> clientOrders(String userId) {
+        return orderRepository.findAllByUserId(new ObjectId(userId));
+    }
+
 
 
 }
